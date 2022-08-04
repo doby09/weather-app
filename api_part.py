@@ -1,6 +1,7 @@
 from create_file import create_csv
 import requests
 import os
+from create_file import create_plot
 
 
 api_key = os.environ['curent_weather_data']
@@ -77,6 +78,7 @@ def get_forecast(city):
         columns = ['temperature', 'description', 'wind speed']
         rows = [[final[2], final[3], final[16]], [final[4], final[5], final[17]], [final[6], final[7], final[18]], [final[8], final[9], final[19]], [final[10], final[11], final[20]], [final[12], final[13], final[21]], [final[14], final[15], final[22]]]
         create_csv('data.csv', 'write', columns, rows)
+        create_plot('data.csv')
         return final
     else:
         return None
